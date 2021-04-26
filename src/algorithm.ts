@@ -21,8 +21,18 @@ export function getGCF(inputNum1: string, inputNum2: string) {
 }
 
 // 選択された年がうるう年かどうか
-export function isLeapYear(year: string) {
-  let strIsLeapYear = "No!!";
+export function jdgIsLeapYear(year: string) {
+  let strIsLeapYear: string = "NO!!";
+  let numYear = Number(year);
 
+  // 西暦が4で割り切れる かつ 100で割り切れるか
+  if (numYear % 4 === 0 && numYear % 100 !== 0) {
+    strIsLeapYear = "YES!!";
+  }
+
+  // 400で割り切れるか
+  if (numYear % 400 === 0) {
+    strIsLeapYear = "YES!!";
+  }
   return strIsLeapYear;
 }

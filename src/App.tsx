@@ -1,7 +1,7 @@
 import "./styles.css";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { getGCF } from "./algorithm";
+import { getGCF, jdgIsLeapYear } from "./algorithm";
 
 export default function App() {
   const {
@@ -23,10 +23,9 @@ export default function App() {
   // うるう年判定
   const onSubmitIsLeapYear = (data: any) => {
     console.log(data);
-    const gcf = getGCF(data.GCFNumA, data.GCFNumB);
-    setGcf(gcf);
+    const isLeapYear: string = jdgIsLeapYear(data.year);
+    setIsLeapYear(isLeapYear);
   };
-  console.log(errors);
 
   return (
     <div className="App">
@@ -46,7 +45,7 @@ export default function App() {
         <input type="submit" />
       </form>
       <div>最大公約数:{gcf}</div>
-      <h2>うるう年</h2>
+      <h2>うるう年判定</h2>
       <form onSubmit={handleSubmit(onSubmitIsLeapYear)}>
         <input
           type="number"
